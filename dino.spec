@@ -6,7 +6,7 @@
 #
 Name     : dino
 Version  : 0.1.0
-Release  : 2
+Release  : 4
 URL      : https://github.com/dino/dino/releases/download/v0.1.0/dino-0.1.0.tar.gz
 Source0  : https://github.com/dino/dino/releases/download/v0.1.0/dino-0.1.0.tar.gz
 Source1  : https://github.com/dino/dino/releases/download/v0.1.0/dino-0.1.0.tar.gz.asc
@@ -106,7 +106,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1580761497
+export SOURCE_DATE_EPOCH=1580766729
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -122,7 +122,7 @@ make  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1580761497
+export SOURCE_DATE_EPOCH=1580766729
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/dino
 cp %{_builddir}/dino-0.1.0/LICENSE %{buildroot}/usr/share/package-licenses/dino/1de7bacb4fbbd7b6d391a69abfe174c2509ec303
@@ -132,6 +132,10 @@ popd
 %find_lang dino-omemo
 %find_lang dino-openpgp
 %find_lang dino
+## install_append content
+mkdir -p %{buildroot}/usr/lib64
+install clr-build/libcrypto-vala.so clr-build/libgpgme-vala.so clr-build/libsignal-protocol-vala.so %{buildroot}/usr/lib64
+## install_append end
 
 %files
 %defattr(-,root,root,-)
@@ -168,19 +172,22 @@ popd
 /usr/include/dino_i18n.h
 /usr/include/qlite.h
 /usr/include/xmpp-vala.h
-/usr/lib64/libdino.so
-/usr/lib64/libqlite.so
-/usr/lib64/libxmpp-vala.so
 
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/dino/plugins/http-files.so
 /usr/lib64/dino/plugins/omemo.so
 /usr/lib64/dino/plugins/openpgp.so
+/usr/lib64/libcrypto-vala.so
+/usr/lib64/libdino.so
 /usr/lib64/libdino.so.0
 /usr/lib64/libdino.so.0.0
+/usr/lib64/libgpgme-vala.so
+/usr/lib64/libqlite.so
 /usr/lib64/libqlite.so.0
 /usr/lib64/libqlite.so.0.1
+/usr/lib64/libsignal-protocol-vala.so
+/usr/lib64/libxmpp-vala.so
 /usr/lib64/libxmpp-vala.so.0
 /usr/lib64/libxmpp-vala.so.0.1
 
