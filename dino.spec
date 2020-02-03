@@ -6,11 +6,11 @@
 #
 Name     : dino
 Version  : 0.1.0
-Release  : 1
+Release  : 2
 URL      : https://github.com/dino/dino/releases/download/v0.1.0/dino-0.1.0.tar.gz
 Source0  : https://github.com/dino/dino/releases/download/v0.1.0/dino-0.1.0.tar.gz
 Source1  : https://github.com/dino/dino/releases/download/v0.1.0/dino-0.1.0.tar.gz.asc
-Summary  : No detailed summary available
+Summary  : Modern XMPP ("Jabber") Chat Client using GTK+/Vala
 Group    : Development/Tools
 License  : GPL-3.0
 Requires: dino-bin = %{version}-%{release}
@@ -106,7 +106,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1580759339
+export SOURCE_DATE_EPOCH=1580761497
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -122,7 +122,7 @@ make  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1580759339
+export SOURCE_DATE_EPOCH=1580761497
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/dino
 cp %{_builddir}/dino-0.1.0/LICENSE %{buildroot}/usr/share/package-licenses/dino/1de7bacb4fbbd7b6d391a69abfe174c2509ec303
