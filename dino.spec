@@ -6,7 +6,7 @@
 #
 Name     : dino
 Version  : 0.1.0
-Release  : 4
+Release  : 5
 URL      : https://github.com/dino/dino/releases/download/v0.1.0/dino-0.1.0.tar.gz
 Source0  : https://github.com/dino/dino/releases/download/v0.1.0/dino-0.1.0.tar.gz
 Source1  : https://github.com/dino/dino/releases/download/v0.1.0/dino-0.1.0.tar.gz.asc
@@ -22,7 +22,6 @@ BuildRequires : buildreq-cmake
 BuildRequires : gettext-dev
 BuildRequires : git
 BuildRequires : gpgme-dev
-BuildRequires : icu4c-dev
 BuildRequires : libgcrypt-dev
 BuildRequires : pkg-config
 BuildRequires : pkgconfig(gdk-pixbuf-2.0)
@@ -34,6 +33,7 @@ BuildRequires : pkgconfig(libsoup-2.4)
 BuildRequires : pkgconfig(sqlite3)
 BuildRequires : qrencode-dev
 BuildRequires : vala
+Patch1: 0001-Bump-libsignal-protocol-c-version-to-2.3.3.patch
 
 %description
 ![Dino](https://dino.im/img/readme_header.svg)
@@ -100,13 +100,14 @@ locales components for the dino package.
 %prep
 %setup -q -n dino-0.1.0
 cd %{_builddir}/dino-0.1.0
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1580766729
+export SOURCE_DATE_EPOCH=1586872375
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -114,15 +115,15 @@ export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
 make  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1580766729
+export SOURCE_DATE_EPOCH=1586872375
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/dino
 cp %{_builddir}/dino-0.1.0/LICENSE %{buildroot}/usr/share/package-licenses/dino/1de7bacb4fbbd7b6d391a69abfe174c2509ec303
