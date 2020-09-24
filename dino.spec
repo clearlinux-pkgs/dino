@@ -6,7 +6,7 @@
 #
 Name     : dino
 Version  : 0.1.0
-Release  : 5
+Release  : 6
 URL      : https://github.com/dino/dino/releases/download/v0.1.0/dino-0.1.0.tar.gz
 Source0  : https://github.com/dino/dino/releases/download/v0.1.0/dino-0.1.0.tar.gz
 Source1  : https://github.com/dino/dino/releases/download/v0.1.0/dino-0.1.0.tar.gz.asc
