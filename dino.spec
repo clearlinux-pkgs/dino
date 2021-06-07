@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x01FABCC83FEA225E (release-signing@dino.im)
 #
 Name     : dino
-Version  : 0.2.0
-Release  : 7
-URL      : https://github.com/dino/dino/releases/download/v0.2.0/dino-0.2.0.tar.gz
-Source0  : https://github.com/dino/dino/releases/download/v0.2.0/dino-0.2.0.tar.gz
-Source1  : https://github.com/dino/dino/releases/download/v0.2.0/dino-0.2.0.tar.gz.asc
+Version  : 0.2.1
+Release  : 8
+URL      : https://github.com/dino/dino/releases/download/v0.2.1/dino-0.2.1.tar.gz
+Source0  : https://github.com/dino/dino/releases/download/v0.2.1/dino-0.2.1.tar.gz
+Source1  : https://github.com/dino/dino/releases/download/v0.2.1/dino-0.2.1.tar.gz.asc
 Summary  : Modern XMPP ("Jabber") Chat Client using GTK+/Vala
 Group    : Development/Tools
 License  : GPL-3.0
@@ -97,15 +97,15 @@ locales components for the dino package.
 
 
 %prep
-%setup -q -n dino-0.2.0
-cd %{_builddir}/dino-0.2.0
+%setup -q -n dino-0.2.1
+cd %{_builddir}/dino-0.2.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1605578489
+export SOURCE_DATE_EPOCH=1623087796
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -121,10 +121,10 @@ make
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1605578489
+export SOURCE_DATE_EPOCH=1623087796
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/dino
-cp %{_builddir}/dino-0.2.0/LICENSE %{buildroot}/usr/share/package-licenses/dino/1de7bacb4fbbd7b6d391a69abfe174c2509ec303
+cp %{_builddir}/dino-0.2.1/LICENSE %{buildroot}/usr/share/package-licenses/dino/1de7bacb4fbbd7b6d391a69abfe174c2509ec303
 pushd clr-build
 %make_install
 popd
@@ -132,8 +132,9 @@ popd
 %find_lang dino-openpgp
 %find_lang dino
 ## install_append content
-mkdir -p %{buildroot}/usr/lib64
-install clr-build/libcrypto-vala.so clr-build/libgpgme-vala.so clr-build/libsignal-protocol-vala.so %{buildroot}/usr/lib64
+# these plugins are statically linked now...
+#mkdir -p %{buildroot}/usr/lib64
+#install clr-build/libcrypto-vala.so clr-build/libgpgme-vala.so clr-build/libsignal-protocol-vala.so %{buildroot}/usr/lib64
 ## install_append end
 
 %files
@@ -177,15 +178,12 @@ install clr-build/libcrypto-vala.so clr-build/libgpgme-vala.so clr-build/libsign
 /usr/lib64/dino/plugins/http-files.so
 /usr/lib64/dino/plugins/omemo.so
 /usr/lib64/dino/plugins/openpgp.so
-/usr/lib64/libcrypto-vala.so
 /usr/lib64/libdino.so
 /usr/lib64/libdino.so.0
 /usr/lib64/libdino.so.0.0
-/usr/lib64/libgpgme-vala.so
 /usr/lib64/libqlite.so
 /usr/lib64/libqlite.so.0
 /usr/lib64/libqlite.so.0.1
-/usr/lib64/libsignal-protocol-vala.so
 /usr/lib64/libxmpp-vala.so
 /usr/lib64/libxmpp-vala.so.0
 /usr/lib64/libxmpp-vala.so.0.1
