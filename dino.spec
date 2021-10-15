@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x01FABCC83FEA225E (release-signing@dino.im)
 #
 Name     : dino
-Version  : 0.2.1
-Release  : 8
-URL      : https://github.com/dino/dino/releases/download/v0.2.1/dino-0.2.1.tar.gz
-Source0  : https://github.com/dino/dino/releases/download/v0.2.1/dino-0.2.1.tar.gz
-Source1  : https://github.com/dino/dino/releases/download/v0.2.1/dino-0.2.1.tar.gz.asc
+Version  : 0.2.2
+Release  : 9
+URL      : https://github.com/dino/dino/releases/download/v0.2.2/dino-0.2.2.tar.gz
+Source0  : https://github.com/dino/dino/releases/download/v0.2.2/dino-0.2.2.tar.gz
+Source1  : https://github.com/dino/dino/releases/download/v0.2.2/dino-0.2.2.tar.gz.asc
 Summary  : Modern XMPP ("Jabber") Chat Client using GTK+/Vala
 Group    : Development/Tools
 License  : GPL-3.0
@@ -97,34 +97,34 @@ locales components for the dino package.
 
 
 %prep
-%setup -q -n dino-0.2.1
-cd %{_builddir}/dino-0.2.1
+%setup -q -n dino-0.2.2
+cd %{_builddir}/dino-0.2.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1623087796
+export SOURCE_DATE_EPOCH=1634340826
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
-export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
 %cmake ..
 make
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1623087796
+export SOURCE_DATE_EPOCH=1634340826
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/dino
-cp %{_builddir}/dino-0.2.1/LICENSE %{buildroot}/usr/share/package-licenses/dino/1de7bacb4fbbd7b6d391a69abfe174c2509ec303
+cp %{_builddir}/dino-0.2.2/LICENSE %{buildroot}/usr/share/package-licenses/dino/1de7bacb4fbbd7b6d391a69abfe174c2509ec303
 pushd clr-build
 %make_install
 popd
