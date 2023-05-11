@@ -5,23 +5,18 @@
 # Source0 file verified with key 0x01FABCC83FEA225E (release-signing@dino.im)
 #
 Name     : dino
-Version  : 0.2.2
-Release  : 9
-URL      : https://github.com/dino/dino/releases/download/v0.2.2/dino-0.2.2.tar.gz
-Source0  : https://github.com/dino/dino/releases/download/v0.2.2/dino-0.2.2.tar.gz
-Source1  : https://github.com/dino/dino/releases/download/v0.2.2/dino-0.2.2.tar.gz.asc
+Version  : 0.3.1
+Release  : 11
+URL      : https://github.com/dino/dino/releases/download/v0.3.1/dino-0.3.1.tar.gz
+Source0  : https://github.com/dino/dino/releases/download/v0.3.1/dino-0.3.1.tar.gz
+Source1  : https://github.com/dino/dino/releases/download/v0.3.1/dino-0.3.1.tar.gz.asc
 Summary  : Modern XMPP ("Jabber") Chat Client using GTK+/Vala
 Group    : Development/Tools
 License  : GPL-3.0
-Requires: dino-bin = %{version}-%{release}
-Requires: dino-data = %{version}-%{release}
-Requires: dino-lib = %{version}-%{release}
-Requires: dino-license = %{version}-%{release}
-Requires: dino-locales = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : gettext-dev
 BuildRequires : git
-BuildRequires : gpgme-dev
+BuildRequires : gnutls-dev
 BuildRequires : libgcrypt-dev
 BuildRequires : pkg-config
 BuildRequires : pkgconfig(gdk-pixbuf-2.0)
@@ -39,73 +34,16 @@ BuildRequires : vala
 =======
 ![screenshots](https://dino.im/img/screenshot-main.png)
 
-%package bin
-Summary: bin components for the dino package.
-Group: Binaries
-Requires: dino-data = %{version}-%{release}
-Requires: dino-license = %{version}-%{release}
-
-%description bin
-bin components for the dino package.
-
-
-%package data
-Summary: data components for the dino package.
-Group: Data
-
-%description data
-data components for the dino package.
-
-
-%package dev
-Summary: dev components for the dino package.
-Group: Development
-Requires: dino-lib = %{version}-%{release}
-Requires: dino-bin = %{version}-%{release}
-Requires: dino-data = %{version}-%{release}
-Provides: dino-devel = %{version}-%{release}
-Requires: dino = %{version}-%{release}
-
-%description dev
-dev components for the dino package.
-
-
-%package lib
-Summary: lib components for the dino package.
-Group: Libraries
-Requires: dino-data = %{version}-%{release}
-Requires: dino-license = %{version}-%{release}
-
-%description lib
-lib components for the dino package.
-
-
-%package license
-Summary: license components for the dino package.
-Group: Default
-
-%description license
-license components for the dino package.
-
-
-%package locales
-Summary: locales components for the dino package.
-Group: Default
-
-%description locales
-locales components for the dino package.
-
-
 %prep
-%setup -q -n dino-0.2.2
-cd %{_builddir}/dino-0.2.2
+%setup -q -n dino-0.3.1
+cd %{_builddir}/dino-0.3.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1634340826
+export SOURCE_DATE_EPOCH=1672168889
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -121,16 +59,13 @@ make
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1634340826
+export SOURCE_DATE_EPOCH=1672168889
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/dino
-cp %{_builddir}/dino-0.2.2/LICENSE %{buildroot}/usr/share/package-licenses/dino/1de7bacb4fbbd7b6d391a69abfe174c2509ec303
+cp %{_builddir}/dino-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/dino/31a3d460bb3c7d98845187c716a30db81c44b615
 pushd clr-build
 %make_install
 popd
-%find_lang dino-omemo
-%find_lang dino-openpgp
-%find_lang dino
 ## install_append content
 # these plugins are statically linked now...
 #mkdir -p %{buildroot}/usr/lib64
@@ -139,59 +74,3 @@ popd
 
 %files
 %defattr(-,root,root,-)
-
-%files bin
-%defattr(-,root,root,-)
-/usr/bin/dino
-
-%files data
-%defattr(-,root,root,-)
-/usr/share/applications/im.dino.Dino.desktop
-/usr/share/dbus-1/services/im.dino.Dino.service
-/usr/share/icons/hicolor/scalable/apps/im.dino.Dino.svg
-/usr/share/icons/hicolor/scalable/status/dino-changes-prevent-symbolic.svg
-/usr/share/icons/hicolor/scalable/status/dino-double-tick-symbolic.svg
-/usr/share/icons/hicolor/scalable/status/dino-qr-code-symbolic.svg
-/usr/share/icons/hicolor/scalable/status/dino-status-away.svg
-/usr/share/icons/hicolor/scalable/status/dino-status-chat.svg
-/usr/share/icons/hicolor/scalable/status/dino-status-dnd.svg
-/usr/share/icons/hicolor/scalable/status/dino-status-online.svg
-/usr/share/icons/hicolor/scalable/status/dino-tick-symbolic.svg
-/usr/share/icons/hicolor/symbolic/apps/im.dino.Dino-symbolic.svg
-/usr/share/metainfo/im.dino.Dino.appdata.xml
-/usr/share/vala/vapi/dino.deps
-/usr/share/vala/vapi/dino.vapi
-/usr/share/vala/vapi/qlite.deps
-/usr/share/vala/vapi/qlite.vapi
-/usr/share/vala/vapi/xmpp-vala.deps
-/usr/share/vala/vapi/xmpp-vala.vapi
-
-%files dev
-%defattr(-,root,root,-)
-/usr/include/dino.h
-/usr/include/dino_i18n.h
-/usr/include/qlite.h
-/usr/include/xmpp-vala.h
-
-%files lib
-%defattr(-,root,root,-)
-/usr/lib64/dino/plugins/http-files.so
-/usr/lib64/dino/plugins/omemo.so
-/usr/lib64/dino/plugins/openpgp.so
-/usr/lib64/libdino.so
-/usr/lib64/libdino.so.0
-/usr/lib64/libdino.so.0.0
-/usr/lib64/libqlite.so
-/usr/lib64/libqlite.so.0
-/usr/lib64/libqlite.so.0.1
-/usr/lib64/libxmpp-vala.so
-/usr/lib64/libxmpp-vala.so.0
-/usr/lib64/libxmpp-vala.so.0.1
-
-%files license
-%defattr(0644,root,root,0755)
-/usr/share/package-licenses/dino/1de7bacb4fbbd7b6d391a69abfe174c2509ec303
-
-%files locales -f dino-omemo.lang -f dino-openpgp.lang -f dino.lang
-%defattr(-,root,root,-)
-
