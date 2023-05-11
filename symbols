@@ -432,12 +432,14 @@ libdino.so.0:dino_file_receive_data_get_type
 libdino.so.0:dino_file_receive_data_new
 libdino.so.0:dino_file_receive_data_ref
 libdino.so.0:dino_file_receive_data_unref
+libdino.so.0:dino_file_receive_error_get_type
 libdino.so.0:dino_file_receive_error_quark
 libdino.so.0:dino_file_send_data_construct
 libdino.so.0:dino_file_send_data_get_type
 libdino.so.0:dino_file_send_data_new
 libdino.so.0:dino_file_send_data_ref
 libdino.so.0:dino_file_send_data_unref
+libdino.so.0:dino_file_send_error_get_type
 libdino.so.0:dino_file_send_error_quark
 libdino.so.0:dino_file_sender_can_encrypt
 libdino.so.0:dino_file_sender_can_encrypt_finish
@@ -1152,7 +1154,9 @@ libxmpp-vala.so.0:xmpp_flag_identity_get_ns
 libxmpp-vala.so.0:xmpp_flag_identity_get_type
 libxmpp-vala.so.0:xmpp_flag_identity_matches
 libxmpp-vala.so.0:xmpp_flag_identity_new
+libxmpp-vala.so.0:xmpp_invalid_jid_error_get_type
 libxmpp-vala.so.0:xmpp_invalid_jid_error_quark
+libxmpp-vala.so.0:xmpp_io_stream_error_get_type
 libxmpp-vala.so.0:xmpp_io_stream_error_quark
 libxmpp-vala.so.0:xmpp_iq_handler_get_type
 libxmpp-vala.so.0:xmpp_iq_handler_on_iq_get
@@ -1685,6 +1689,7 @@ libxmpp-vala.so.0:xmpp_xep_explicit_encryption_get_encryption_tag
 libxmpp-vala.so.0:xmpp_xep_http_file_upload_flag_construct
 libxmpp-vala.so.0:xmpp_xep_http_file_upload_flag_get_type
 libxmpp-vala.so.0:xmpp_xep_http_file_upload_flag_new
+libxmpp-vala.so.0:xmpp_xep_http_file_upload_http_file_transfer_error_get_type
 libxmpp-vala.so.0:xmpp_xep_http_file_upload_http_file_transfer_error_quark
 libxmpp-vala.so.0:xmpp_xep_http_file_upload_module_construct
 libxmpp-vala.so.0:xmpp_xep_http_file_upload_module_get_type
@@ -1827,6 +1832,7 @@ libxmpp-vala.so.0:xmpp_xep_jingle_content_type_content_type_transport_type
 libxmpp-vala.so.0:xmpp_xep_jingle_content_type_get_type
 libxmpp-vala.so.0:xmpp_xep_jingle_content_type_handle_content_session_info
 libxmpp-vala.so.0:xmpp_xep_jingle_content_type_parse_content_parameters
+libxmpp-vala.so.0:xmpp_xep_jingle_error_get_type
 libxmpp-vala.so.0:xmpp_xep_jingle_error_quark
 libxmpp-vala.so.0:xmpp_xep_jingle_file_transfer_file_transfer_accept
 libxmpp-vala.so.0:xmpp_xep_jingle_file_transfer_file_transfer_construct
@@ -1874,6 +1880,7 @@ libxmpp-vala.so.0:xmpp_xep_jingle_in_band_bytestreams_parameters_get_sid
 libxmpp-vala.so.0:xmpp_xep_jingle_in_band_bytestreams_parameters_get_type
 libxmpp-vala.so.0:xmpp_xep_jingle_in_band_bytestreams_parameters_new_create
 libxmpp-vala.so.0:xmpp_xep_jingle_in_band_bytestreams_parameters_parse
+libxmpp-vala.so.0:xmpp_xep_jingle_iq_error_get_type
 libxmpp-vala.so.0:xmpp_xep_jingle_iq_error_quark
 libxmpp-vala.so.0:xmpp_xep_jingle_module_construct
 libxmpp-vala.so.0:xmpp_xep_jingle_module_create_session
@@ -2301,6 +2308,7 @@ libxmpp-vala.so.0:xmpp_xep_vcard_fetch_image_finish
 libxmpp-vala.so.0:xmpp_xep_vcard_module_construct
 libxmpp-vala.so.0:xmpp_xep_vcard_module_get_type
 libxmpp-vala.so.0:xmpp_xep_vcard_module_new
+libxmpp-vala.so.0:xmpp_xml_error_get_type
 libxmpp-vala.so.0:xmpp_xml_error_quark
 libxmpp-vala.so.0:xmpp_xmpp_log_construct
 libxmpp-vala.so.0:xmpp_xmpp_log_get_type
