@@ -7,7 +7,7 @@
 #
 Name     : dino
 Version  : 0.2.2
-Release  : 12
+Release  : 13
 URL      : https://github.com/dino/dino/releases/download/v0.2.2/dino-0.2.2.tar.gz
 Source0  : https://github.com/dino/dino/releases/download/v0.2.2/dino-0.2.2.tar.gz
 Source1  : https://github.com/dino/dino/releases/download/v0.2.2/dino-0.2.2.tar.gz.asc
@@ -110,7 +110,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1683824238
+export SOURCE_DATE_EPOCH=1685497038
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -143,7 +143,7 @@ make
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1683824238
+export SOURCE_DATE_EPOCH=1685497038
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/dino
 cp %{_builddir}/dino-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/dino/1de7bacb4fbbd7b6d391a69abfe174c2509ec303 || :
@@ -205,14 +205,8 @@ popd
 /V3/usr/lib64/dino/plugins/http-files.so
 /V3/usr/lib64/dino/plugins/omemo.so
 /V3/usr/lib64/dino/plugins/openpgp.so
-/V3/usr/lib64/libdino.so
-/V3/usr/lib64/libdino.so.0
 /V3/usr/lib64/libdino.so.0.0
-/V3/usr/lib64/libqlite.so
-/V3/usr/lib64/libqlite.so.0
 /V3/usr/lib64/libqlite.so.0.1
-/V3/usr/lib64/libxmpp-vala.so
-/V3/usr/lib64/libxmpp-vala.so.0
 /V3/usr/lib64/libxmpp-vala.so.0.1
 /usr/lib64/dino/plugins/http-files.so
 /usr/lib64/dino/plugins/omemo.so
